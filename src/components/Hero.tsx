@@ -45,7 +45,7 @@ export default function Hero() {
   const b = banners[current];
 
   return (
-    <section id="home" className="relative pt-[152px] md:pt-[168px] bg-white">
+    <section id="home" className="relative pt-[128px] md:pt-[152px] bg-white">
       <div className="relative w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div

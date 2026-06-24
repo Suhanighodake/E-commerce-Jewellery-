@@ -1,103 +1,111 @@
 import { motion } from 'framer-motion';
-import { Compass, Heart, Crown, TrendingUp } from 'lucide-react';
-import { ScrollReveal, StaggerContainer, StaggerItem } from './ScrollReveal';
-
-const values = [
-  {
-    icon: Compass,
-    title: 'Intentional Design',
-    desc: 'Every curve is planned. Every setting is purposeful. We design for the woman who chooses her jewellery as deliberately as she chooses her words.'
-  },
-  {
-    icon: Heart,
-    title: 'Made for Her',
-    desc: 'Not too loud for the office. Not too quiet for the party. Just right for the woman who moves between worlds with effortless grace.'
-  },
-  {
-    icon: Crown,
-    title: 'Timeless Style',
-    desc: 'Trends fade. Style endures. Our pieces are designed to be worn for decades — becoming signatures, then heirlooms.'
-  },
-  {
-    icon: TrendingUp,
-    title: 'Smart Investment',
-    desc: 'Gold holds value. A Royelle piece appreciates in worth while it adorns your wrist, neck, or finger. Beauty that bankrolls itself.'
-  }
-];
+import { ScrollReveal } from './ScrollReveal';
 
 export default function About() {
   return (
-    <section id="about" className="relative py-16 md:py-24 bg-white">
-      <div className="container-luxury">
-        <div className="grid-responsive-2 items-center">
-          <ScrollReveal direction="left">
-            <div className="relative">
-              <div className="relative overflow-hidden rounded-sm shadow-card">
-                <img
-                  src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop"
-                  alt="Fine gold jewellery collection"
-                  className="w-full aspect-jewelry object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+    <section id="about" className="relative py-24 md:py-32 bg-slate-50 overflow-hidden">
+      {/* Subtle ambient texture */}
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(139,92,246,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(168,85,247,0.06) 0%, transparent 50%)' }} />
 
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  className="absolute bottom-5 left-5 right-5 bg-white p-4 rounded-sm shadow-card border border-slate-100"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-sm bg-gradient-to-br from-royal-gold to-royal-rose flex items-center justify-center flex-shrink-0">
-                      <Crown className="w-5 h-5 text-white" strokeWidth={1.2} />
-                    </div>
-                    <div>
-                      <p className="font-[Cormorant_Garamond] text-lg text-slate-800">30+ Years</p>
-                      <p className="text-xs text-slate-400 uppercase tracking-[0.15em]">Heritage of Craft</p>
-                    </div>
-                  </div>
-                </motion.div>
+      <div className="container-luxury relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
+          {/* Left: Overlapping circular images */}
+          <ScrollReveal direction="left" className="lg:w-[48%]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="relative w-full max-w-md mx-auto lg:mx-0"
+            >
+              {/* Decorative circle behind */}
+              <div className="absolute -top-8 -left-8 w-full h-full rounded-t-full rounded-b-[3rem] bg-royal-purple/5 -z-10" />
+              
+              {/* Main large image — vertical pill/arch shape */}
+              <div className="relative overflow-hidden rounded-t-full rounded-b-[3rem] aspect-[3/4] shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=750&fit=crop"
+                  alt="Royelle gold jewellery collection"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="absolute -top-2 -left-2 w-12 h-12 border border-royal-purple/10 rounded-sm pointer-events-none" />
-            </div>
+
+              {/* Small overlapping circle — bottom right */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+                className="absolute -bottom-8 -right-4 md:-right-8 w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-2xl"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop&q=80"
+                  alt="Royelle statement rings"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+
+              {/* Decorative ring around small circle */}
+              <div className="absolute -bottom-10 -right-6 md:-right-10 w-36 h-36 md:w-48 md:h-48 rounded-full border border-royal-purple/10 -z-10" />
+            </motion.div>
           </ScrollReveal>
 
-          <div>
-            <ScrollReveal>
-              <span className="text-royal-purple text-xs uppercase tracking-[0.25em] font-medium">Our Story</span>
-              <h2 className="font-[Cormorant_Garamond] text-3xl md:text-4xl lg:text-5xl font-light mt-3 mb-5 text-slate-800">
-                Where <span className="text-royal-purple italic font-medium">Heritage</span> Meets <span className="text-royal-purple italic font-medium">Ambition</span>
-              </h2>
-              <div className="accent-line w-12 mb-5" />
-              <p className="text-slate-500 text-base leading-[1.9] mb-4 font-light">
+          {/* Right: Text content */}
+          <ScrollReveal direction="right" className="lg:w-[52%] text-center lg:text-left mt-12 lg:mt-0">
+            <div className="max-w-xl mx-auto lg:mx-0">
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="inline-block text-royal-purple-light text-xs uppercase tracking-[0.3em] font-medium mb-6"
+              >
+                Our Story
+              </motion.span>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-[Cormorant_Garamond] text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4rem] font-light text-slate-900 leading-[1.05] mb-8"
+              >
+                Where Heritage<br />
+                <span className="italic font-normal text-royal-purple">Meets Ambition</span>
+              </motion.h2>
+
+              <motion.div
+                initial={{ opacity: 0, scaleX: 0 }}
+                whileInView={{ opacity: 1, scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="w-16 h-[1px] bg-royal-purple mx-auto lg:mx-0 origin-left mb-8"
+              />
+
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.25 }}
+                className="text-slate-600 text-base md:text-lg leading-[1.9] mb-6 font-light"
+              >
                 Royelle was born from a simple truth: the modern working woman deserved jewellery
                 that matched her ambition. Not flashy. Not forgettable. But precisely calibrated
                 for power dressing, boardroom confidence, and celebration evenings.
-              </p>
-              <p className="text-slate-400 text-base leading-[1.9] mb-8 font-light">
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="text-slate-400 text-sm md:text-base leading-[1.9] font-light"
+              >
                 From our first corporate-friendly mangalsutra to our diamond-accented statement rings,
                 every creation honors tradition while speaking the language of contemporary leadership.
-              </p>
-            </ScrollReveal>
-
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-3" staggerDelay={0.1}>
-              {values.map((v) => {
-                const Icon = v.icon;
-                return (
-                  <StaggerItem key={v.title}>
-                    <motion.div
-                      whileHover={{ y: -3 }}
-                      className="p-4 rounded-sm bg-white border border-slate-100 hover:border-royal-purple/20 hover:shadow-card transition-all duration-500 group"
-                    >
-                      <Icon className="w-4 h-4 text-royal-purple mb-2 group-hover:text-royal-rose transition-colors" strokeWidth={1.2} />
-                      <h3 className="font-[Cormorant_Garamond] text-base font-semibold text-slate-800 mb-1">{v.title}</h3>
-                      <p className="text-xs text-slate-400 leading-[1.6]">{v.desc}</p>
-                    </motion.div>
-                  </StaggerItem>
-                );
-              })}
-            </StaggerContainer>
-          </div>
+              </motion.p>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
