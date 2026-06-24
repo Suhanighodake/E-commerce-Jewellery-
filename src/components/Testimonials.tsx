@@ -116,7 +116,7 @@ export default function Testimonials() {
   }, [isHovered, scrollVelocity]);
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden bg-slate-50">
+    <section className="relative py-12 md:py-12 overflow-hidden bg-slate-50">
       <div className="container-luxury">
         <ScrollReveal className="text-center mb-14">
           <span className="text-royal-purple-light text-xs uppercase tracking-[0.25em] font-medium">Voices</span>

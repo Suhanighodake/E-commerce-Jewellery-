@@ -62,7 +62,7 @@ export default function Craftsmanship() {
   const isInView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <section className="relative py-14 md:py-20 bg-slate-50 overflow-hidden">
+    <section className="relative py-10 md:py-14 bg-slate-50 overflow-hidden">
       <motion.div
         className="absolute top-10 right-10 w-28 h-28 rounded-full bg-royal-purple/15 blur-3xl"
         animate={{ y: [0, -15, 0] }}
@@ -76,7 +76,7 @@ export default function Craftsmanship() {
 
       <div className="container-luxury relative z-10">
         <motion.div
-          className="text-center mb-10"
+          className="text-center mb-6"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -6,7 +6,6 @@ const categoryLinks = [
   { name: 'Rings', href: '#shop' },
   { name: 'Earrings', href: '#shop' },
   { name: 'Bracelets & Bangles', href: '#shop' },
-  { name: 'Solitaires', href: '#shop' },
   { name: 'Mangalsutras', href: '#shop' },
   { name: 'Necklaces', href: '#shop' },
   { name: 'Collections', href: '#collections' },

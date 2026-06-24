@@ -25,9 +25,9 @@ const materialsList = [
 
 export default function Materials() {
   return (
-    <section className="relative py-24 md:py-32 bg-gradient-to-b from-white via-slate-50/60 to-white overflow-hidden">
+    <section className="relative py-10 md:py-14 bg-gradient-to-b from-white via-slate-50/60 to-white overflow-hidden">
       <div className="container-luxury relative z-10">
-        <ScrollReveal className="text-center mb-16 md:mb-20">
+        <ScrollReveal className="text-center mb-8 md:mb-10">
           <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-royal-purple/5 border border-royal-purple/10 rounded-full mb-8">
             <Award className="w-4 h-4 text-royal-purple" strokeWidth={1.5} />
             <span className="text-sm text-royal-purple tracking-[0.18em] uppercase font-medium">BIS Hallmarked</span>

@@ -64,9 +64,9 @@ export default function ProductSections() {
         }
 
         return (
-          <div key={section.id} className={`${section.bgColor} py-14 md:py-20`}>
+          <div key={section.id} className={`${section.bgColor} py-8 md:py-12`}>
             <div className="container-luxury">
-              <ScrollReveal className="flex items-end justify-between mb-8">
+              <ScrollReveal className="flex items-end justify-between mb-5">
                 <div className="flex items-center gap-4">
                   <div className={`w-1 h-10 rounded-full ${section.borderColor} bg-current`} />
                   <div>
