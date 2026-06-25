@@ -1,164 +1,139 @@
-import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Quote, Star } from 'lucide-react';
-import { ScrollReveal } from './ScrollReveal';
-import { useLenis } from './LenisProvider';
+import { Star } from 'lucide-react';
+import { ScrollReveal, StaggerContainer, StaggerItem } from './ScrollReveal';
 
 const testimonials = [
   {
-    id: 1, name: 'Priya Sharma', role: 'Marketing Director', initial: 'P',
-    text: 'The modern mangalsutra from Royelle is a revelation. I wear it to client meetings and it is so contemporary that no one realizes it is a mangalsutra — yet it carries all the meaning for me.',
-    rating: 5
+    id: 1, name: 'Aditi Rao', role: 'Bollywood Actress',
+    text: 'Royelle understands the modern Indian woman. Their 18K gold pieces add just the right amount of elegance to every red carpet look.',
+    image: 'https://i.pinimg.com/1200x/47/64/3a/47643ab7afda51126e3fc9876e09298e.jpg',
   },
   {
-    id: 2, name: 'Ananya Reddy', role: 'Investment Banker', initial: 'A',
-    text: 'I have been searching for office-appropriate gold jewellery for years. Royelle nails the balance between elegant and modern. The 14K office collection starts at just ₹3,200 and looks premium.',
-    rating: 5
+    id: 2, name: 'Priya Sharma', role: 'Marketing Director',
+    text: 'The modern mangalsutra is a revelation. I wear it to client meetings and no one realizes it is a mangalsutra — yet it carries all the meaning.',
+    image: 'https://i.pinimg.com/736x/d2/fa/a3/d2faa3339b31f500a1c5655ce21579a6.jpg',
   },
   {
-    id: 3, name: 'Kavita Menon', role: 'Startup Founder', initial: 'K',
-    text: 'From my first pitch to our series A party, Royelle has been with me. The 18K pieces are genuinely premium — you can feel the weight and quality. And everything is under ₹20,000? Unbelievable.',
-    rating: 5
+    id: 3, name: 'Kiara Advani', role: 'Leading Actress',
+    text: 'I have collaborated with many jewellery brands, but Royelle stands apart. Heritage and contemporary design in perfect harmony.',
+    image: 'https://i.pinimg.com/736x/a8/0f/22/a80f22e551df9d211c6437a7c185594b.jpg',
   },
   {
-    id: 4, name: 'Dr. Sarah Thomas', role: 'Cardiologist', initial: 'S',
-    text: 'As a senior physician, I need jewellery that is subtle, hygienic, and professional. The slim 14K bangles and pearl studs are perfect for long hospital shifts. Beautiful and practical.',
-    rating: 5
+    id: 4, name: 'Ananya Reddy', role: 'Investment Banker',
+    text: 'Royelle nails the balance between elegant and modern. The 14K office collection looks incredibly premium and wears comfortably all day.',
+    image: 'https://d28wu8o6itv89t.cloudfront.net/images/GhazalAlaghjpg-1709202924557.jpeg',
   },
   {
-    id: 5, name: 'Ritu Kapoor', role: 'Operations Head, MNC', initial: 'R',
-    text: 'I travel constantly between Singapore, Dubai, and Mumbai. Royelle pieces transition seamlessly from morning meetings to evening client dinners. The investment in 18K gold makes financial sense too.',
-    rating: 5
+    id: 5, name: 'Sanya Malhotra', role: 'Film Actress',
+    text: 'From morning shoots to evening premieres, Royelle transitions with me. The craftsmanship is extraordinary — every piece feels personal.',
+    image: 'https://i.pinimg.com/736x/74/f4/19/74f419779c58ef9983c331baa920dc92.jpg',
   },
   {
-    id: 6, name: 'Meera Joshi', role: 'Corporate Lawyer', initial: 'M',
-    text: 'Finally, jewellery that matches my power suits. The diamond-accented studs are subtle enough for court yet elegant enough for post-work events. Royelle understands the working woman.',
-    rating: 5
-  }
+    id: 6, name: 'Kavita Menon', role: 'Startup Founder',
+    text: 'From my first pitch to our series A celebration, Royelle has been with me. The quality and weight of 18K gold speaks for itself.',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=300&h=300&fit=crop&crop=face&q=80',
+  },
 ];
 
-function TestimonialCard({ t, index }: { t: typeof testimonials[0]; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ y: -6, transition: { duration: 0.3 } }}
-      className="flex-shrink-0 w-[340px] sm:w-[380px] group"
-    >
-      <div className="relative h-full bg-white rounded-2xl p-6 sm:p-7 border border-slate-100 shadow-card hover:shadow-xl hover:border-royal-purple/20 transition-all duration-500">
-        {/* Top accent line */}
-        <div className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-royal-purple/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        {/* Quote icon */}
-        <Quote className="w-8 h-8 text-royal-purple/10 mb-4" strokeWidth={1.5} />
-
-        {/* Stars */}
-        <div className="flex items-center gap-1 mb-4">
-          {[...Array(t.rating)].map((_, i) => (
-            <Star key={i} className="w-3.5 h-3.5 text-royal-gold fill-royal-gold" strokeWidth={1.5} />
-          ))}
-        </div>
-
-        {/* Text */}
-        <p className="text-slate-600 text-[15px] leading-[1.75] mb-6 font-light line-clamp-4">
-          "{t.text}"
-        </p>
-
-        {/* Author */}
-        <div className="flex items-center gap-3 pt-4 border-t border-slate-50">
-          <div className="w-11 h-11 rounded-full flex items-center justify-center bg-royal-purple-light shadow-sm">
-            <span className="font-[Cormorant_Garamond] text-lg font-semibold text-white">{t.initial}</span>
-          </div>
-          <div>
-            <h4 className="font-[Cormorant_Garamond] text-base font-semibold text-slate-800">{t.name}</h4>
-            <p className="text-[11px] text-royal-purple uppercase tracking-[0.15em] font-medium">{t.role}</p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
+const trustAvatars = [
+  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face&q=80',
+  'https://d28wu8o6itv89t.cloudfront.net/images/VineetaSinghjpg-1709202897464.jpeg',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face&q=80',
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face&q=80',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face&q=80',
+  'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&h=80&fit=crop&crop=face&q=80',
+  'https://d28wu8o6itv89t.cloudfront.net/images/GhazalAlaghjpg-1709202924557.jpeg',
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face&q=80',
+];
 
 export default function Testimonials() {
-  const marqueeRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const scrollPosRef = useRef(0);
-  const { scrollVelocity } = useLenis();
-
-  useEffect(() => {
-    const marquee = marqueeRef.current;
-    if (!marquee) return;
-
-    let animationId: number;
-    const baseSpeed = 0.6;
-
-    const animate = () => {
-      if (!isHovered) {
-        // Speed increases with scroll velocity for interactive feel
-        const velocityBoost = Math.abs(scrollVelocity) * 0.15;
-        const speed = baseSpeed + velocityBoost;
-
-        scrollPosRef.current += speed;
-        const firstChild = marquee.firstElementChild as HTMLElement;
-        if (firstChild && scrollPosRef.current >= firstChild.offsetWidth + 24) {
-          scrollPosRef.current = 0;
-          marquee.appendChild(marquee.firstElementChild!);
-        }
-        marquee.style.transform = `translateX(-${scrollPosRef.current}px)`;
-      }
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationId);
-  }, [isHovered, scrollVelocity]);
-
   return (
-    <section className="relative py-12 md:py-12 overflow-hidden bg-slate-50">
+    <section className="relative py-16 md:py-20 overflow-hidden bg-slate-50">
       <div className="container-luxury">
-        <ScrollReveal className="text-center mb-14">
+        {/* Header */}
+        <ScrollReveal className="text-center mb-10 md:mb-12">
           <span className="text-royal-purple-light text-xs uppercase tracking-[0.25em] font-medium">Voices</span>
-          <h2 className="font-[Cormorant_Garamond] text-4xl md:text-5xl lg:text-6xl font-light mt-3 mb-4 text-slate-800">
+          <h2 className="font-[Cormorant_Garamond] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mt-3 mb-4 text-slate-800">
             Loved by <span className="text-royal-purple italic font-medium">Leaders</span>
           </h2>
-          <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-royal-purple to-transparent mx-auto" />
+          <motion.div
+            className="w-16 h-[2px] bg-gradient-to-r from-transparent via-royal-purple to-transparent mx-auto"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
         </ScrollReveal>
-      </div>
 
-      {/* Marquee container with Lenis-aware velocity */}
-      <div
-        className="relative"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-        {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
-
-        {/* Scrolling track */}
-        <div className="overflow-hidden py-4">
-          <div ref={marqueeRef} className="flex gap-6 pl-6">
-            {testimonials.map((t, i) => (
-              <TestimonialCard key={t.id} t={t} index={i} />
-            ))}
-            {/* Duplicate for seamless loop */}
-            {testimonials.map((t, i) => (
-              <TestimonialCard key={`dup-${t.id}`} t={t} index={i + testimonials.length} />
+        {/* Trust avatars row */}
+        <div className="flex flex-col items-center mb-14 md:mb-16">
+          <div className="flex items-center justify-center -space-x-3 sm:-space-x-4 mb-5">
+            {trustAvatars.map((src, i) => (
+              <motion.div
+                key={i}
+                className="relative w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 sm:border-[3px] border-white shadow-md sm:shadow-lg"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, type: 'spring', stiffness: 300 }}
+                whileHover={{ scale: 1.15, zIndex: 10 }}
+              >
+                <img src={src} alt="" className="w-full h-full object-cover" />
+              </motion.div>
             ))}
           </div>
+          <span className="text-slate-500 text-xs sm:text-sm uppercase tracking-[0.2em]">Trusted by 10,000+ Women</span>
         </div>
-      </div>
 
-      {/* Bottom decorative elements */}
-      <div className="container-luxury mt-12">
-        <div className="flex items-center justify-center gap-8">
-          <div className="h-px w-12 bg-slate-200" />
-          <span className="text-slate-400 text-xs uppercase tracking-[0.2em]">Trusted by 10,000+ Women</span>
-          <div className="h-px w-12 bg-slate-200" />
-        </div>
+        {/* Cards grid */}
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6" staggerDelay={0.12}>
+          {testimonials.map((t) => (
+            <StaggerItem key={t.id}>
+              <div className="group bg-white rounded-2xl p-4 sm:p-6 shadow-card hover:shadow-xl transition-shadow duration-500">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
+                  {/* Image — 1st on mobile, 2nd on desktop */}
+                  <motion.div
+                    className="order-1 sm:order-2 w-20 h-20 sm:w-20 md:w-24 lg:w-28 rounded-xl overflow-hidden shadow-md flex-shrink-0 mx-auto sm:mx-0"
+                    whileHover={{ scale: 1.04 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+
+                  {/* Name/role/stars — 2nd on mobile, 1st on desktop */}
+                  <div className="order-2 sm:order-1 flex flex-col items-center sm:items-start gap-2 min-w-[90px] sm:min-w-[120px]">
+                    <div className="text-center sm:text-left">
+                      <h4 className="font-[Cormorant_Garamond] text-base sm:text-xl font-semibold text-slate-800 leading-tight">
+                        {t.name}
+                      </h4>
+                      <p className="text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-[0.12em] font-medium mt-0.5">
+                        {t.role}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-[2px] sm:gap-0.5">
+                      {[...Array(5)].map((_, j) => (
+                        <Star
+                          key={j}
+                          className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-royal-purple fill-royal-purple"
+                          strokeWidth={0}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Text — 3rd on both */}
+                  <p className="order-3 text-slate-500 text-sm leading-[1.75] font-light flex-1 text-center sm:text-left">
+                    {t.text}
+                  </p>
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
     </section>
   );

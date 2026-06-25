@@ -22,14 +22,14 @@ const contactInfo = [
 ];
 
 const floatingProducts = [
-  { src: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=280&h=280&fit=crop', x: '6%', y: '12%', size: 90, delay: 0, duration: 5 },
-  { src: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=280&h=280&fit=crop', x: '85%', y: '18%', size: 80, delay: 1, duration: 6 },
-  { src: 'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=280&h=280&fit=crop', x: '90%', y: '60%', size: 100, delay: 0.5, duration: 7 },
-  { src: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=280&h=280&fit=crop', x: '2%', y: '65%', size: 85, delay: 1.5, duration: 5.5 },
-  { src: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=280&h=280&fit=crop', x: '72%', y: '82%', size: 75, delay: 2, duration: 6.5 },
-  { src: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=280&h=280&fit=crop', x: '18%', y: '88%', size: 95, delay: 0.8, duration: 5 },
-  { src: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=280&h=280&fit=crop', x: '48%', y: '6%', size: 70, delay: 1.2, duration: 7 },
-  { src: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=280&h=280&fit=crop', x: '42%', y: '88%', size: 80, delay: 1.8, duration: 6 },
+  { src: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop', x: '6%', y: '12%', size: 120, delay: 0, duration: 5 },
+  { src: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop', x: '82%', y: '15%', size: 120, delay: 1, duration: 6 },
+  { src: 'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&h=400&fit=crop', x: '88%', y: '55%', size: 120, delay: 0.5, duration: 7 },
+  { src: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=400&h=400&fit=crop', x: '2%', y: '60%', size: 120, delay: 1.5, duration: 5.5 },
+  { src: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400&h=400&fit=crop', x: '85%', y: '82%', size: 120, delay: 2, duration: 6.5 },
+  { src: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop', x: '15%', y: '83%', size: 120, delay: 0.8, duration: 5 },
+  { src: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=400&h=400&fit=crop', x: '46%', y: '4%', size: 120, delay: 1.2, duration: 7 },
+  { src: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop', x: '40%', y: '83%', size: 120, delay: 1.8, duration: 6 },
 ];
 
 export default function Contact() {
@@ -40,7 +40,7 @@ export default function Contact() {
         {floatingProducts.map((p, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full overflow-hidden shadow-xl border-[3px] border-white opacity-80 hover:opacity-100 transition-opacity duration-500"
+            className="absolute rounded-full overflow-hidden shadow-2xl border-[5px] border-white opacity-80 hover:opacity-100 transition-opacity duration-500"
             style={{
               left: p.x,
               top: p.y,

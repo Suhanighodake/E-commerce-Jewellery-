@@ -355,7 +355,7 @@ export const products: Product[] = [
   },
   {
     id: 32,
-    name: "Diamond Errungs",
+    name: "Diamond Errings",
     category: "party",
     type: "earring",
     material: "18k",
