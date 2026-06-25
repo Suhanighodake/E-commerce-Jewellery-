@@ -7,7 +7,7 @@ interface SectionDef {
   id: string;
   title: string;
   subtitle: string;
-  category: 'office' | 'meeting' | 'party';
+  category: 'office' | 'meeting' | 'party' | 'daily';
   bgColor: string;
   borderColor: string;
 }
@@ -41,14 +41,13 @@ const sections: SectionDef[] = [
     id: 'daily-wear',
     title: 'Daily Wear',
     subtitle: 'Effortless pieces for every moment',
-    category: 'office',
+    category: 'daily',
     bgColor: 'bg-slate-50',
     borderColor: 'border-teal-600',
   },
 ];
 
 const officeWearIds = [1, 2, 3, 4, 5, 6, 7, 8];
-const dailyWearIds = [9, 10, 11, 12, 13, 14, 15, 16];
 
 export default function ProductSections() {
   return (
@@ -57,8 +56,6 @@ export default function ProductSections() {
         let sectionProducts: typeof products;
         if (section.id === 'office-wear') {
           sectionProducts = products.filter((p) => officeWearIds.includes(p.id));
-        } else if (section.id === 'daily-wear') {
-          sectionProducts = products.filter((p) => dailyWearIds.includes(p.id));
         } else {
           sectionProducts = products.filter((p) => p.category === section.category).slice(0, 8);
         }

@@ -1,7 +1,7 @@
 export interface Product {
   id: number;
   name: string;
-  category: 'office' | 'meeting' | 'party';
+  category: 'office' | 'meeting' | 'party' | 'daily';
   type: 'ring' | 'earring' | 'bangle' | 'bracelet' | 'chain' | 'mangalsutra';
   material: '14k' | '18k';
   price: number;
@@ -24,7 +24,7 @@ export const products: Product[] = [
     material: "14k",
     price: 4200,
     description: "A whisper-thin 14K gold band with a single prong-set diamond. Understated brilliance for the woman who leads by quiet example.",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=750&fit=crop",
+    image: "https://i.pinimg.com/736x/62/02/93/62029313a1c5c99bc321ca4e5352a505.jpg",
     isBestseller: true
   },
   {
@@ -143,6 +143,92 @@ export const products: Product[] = [
     description: "Small 14K rose gold huggie hoops with a high-shine finish. Comfortable enough for all-day wear, polished enough for any meeting.",
     image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&h=750&fit=crop",
     badge: "Daily Staple"
+  },
+
+  // ═════════════════════════════════════════════════════════
+  // DAILY WEAR
+  // ═════════════════════════════════════════════════════════
+  {
+    id: 49,
+    name: "Aurora Daily Ring",
+    category: "daily",
+    type: "ring",
+    material: "14k",
+    price: 3600,
+    description: "A feather-light 14K gold band with a single spark of brilliance. Made for the quiet rhythm of everyday.",
+    image: "https://i.pinimg.com/1200x/4a/de/ea/4adeeafe6bbc53258e489295d21acc89.jpg",
+    isBestseller: true
+  },
+  {
+    id: 50,
+    name: "Everyday Pearl Studs",
+    category: "daily",
+    type: "earring",
+    material: "14k",
+    price: 2600,
+    description: "Petite freshwater pearls set in warm 14K gold. The kind of understated staple that works from coffee runs to candlelight.",
+    image: "https://i.pinimg.com/1200x/ac/a8/f3/aca8f3799d5a571b4f0df944696ad9cc.jpg"
+  },
+  {
+    id: 51,
+    name: "Classic Round Bangle",
+    category: "daily",
+    type: "bangle",
+    material: "14k",
+    price: 6400,
+    description: "A slim, polished 14K gold bangle with a soft glow. Elegant alone, and even better stacked.",
+    image: "https://i.pinimg.com/1200x/80/c0/c7/80c0c75f48828f1a2730a09d924e6c0e.jpg"
+  },
+  {
+    id: 52,
+    name: "Slim Bar Chain",
+    category: "daily",
+    type: "chain",
+    material: "14k",
+    price: 4200,
+    description: "A delicate vertical bar pendant on a fine 14K chain. Minimal geometry that goes with absolutely everything.",
+    image: "https://i.pinimg.com/736x/fa/df/74/fadf7414eb5f3504b3df26bcbc45e25d.jpg"
+  },
+  {
+    id: 53,
+    name: "Tiny Gold Hoops",
+    category: "daily",
+    type: "earring",
+    material: "14k",
+    price: 2200,
+    description: "Small huggie hoops in 14K yellow gold. Light enough to sleep in, polished enough to be noticed.",
+    image: "https://i.pinimg.com/control1/1200x/a4/9a/a8/a49aa8f5f44e8d0fe491a0b528d3d4fa.jpg",
+    isNew: true
+  },
+  {
+    id: 54,
+    name: "Everyday Link Bracelet",
+    category: "daily",
+    type: "bracelet",
+    material: "14k",
+    price: 3200,
+    description: "A refined cable-link bracelet in 14K gold that sits beautifully at the wrist from morning to midnight.",
+    image: "https://i.pinimg.com/736x/91/7b/79/917b790809e3f996c667eab7116c5b52.jpg"
+  },
+  {
+    id: 55,
+    name: "Daily Signet Ring",
+    category: "daily",
+    type: "ring",
+    material: "14k",
+    price: 3400,
+    description: "A tiny oval signet in brushed 14K gold. Modern heritage for the woman who keeps it simple.",
+    image: "https://i.pinimg.com/736x/4e/1a/9a/4e1a9ada6d6fb2178ca179ab446fbf57.jpg"
+  },
+  {
+    id: 56,
+    name: "Daily Mangalsutra",
+    category: "daily",
+    type: "mangalsutra",
+    material: "14k",
+    price: 9800,
+    description: "A tiny lotus motif in 14K gold on a delicate black-bead chain. Tradition reimagined for everyday grace.",
+    image: "https://i.pinimg.com/736x/8d/3c/c8/8d3cc8177f32e8dac30ed6a4404bfef7.jpg",
   },
 
   // ═════════════════════════════════════════════════════════
@@ -287,8 +373,7 @@ export const products: Product[] = [
     material: "18k",
     price: 20000,
     description: "Upgrade your look with our New Collection diamond necklace set, crafted in elegant rose gold & sparkling diamonds",
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&h=750&fit=crop",
-    isBestseller: true
+    image: "https://i.pinimg.com/1200x/b8/ea/23/b8ea230547d6a18fd11da8529a5a30e9.jpg",
   },
   {
     id: 14,
@@ -298,29 +383,27 @@ export const products: Product[] = [
     material: "18k",
     price: 19500,
     description: "A design where gold and diamonds come together in quiet harmony. ",
-    image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&h=750&fit=crop",
-    isNew: true,
+    image: "https://i.pinimg.com/control1/1200x/5a/6d/20/5a6d20d82b1042fc6bf5e024202a958e.jpg",
   },
   {
     id: 15,
-    name: "Royal Court Necklace",
+    name: "Royal Chain",
     category: "party",
     type: "chain",
     material: "18k",
     price: 19800,
     description: "A dramatic collar of graduated cubic zirconia set in 18K white gold. Designed for the entrance that pauses every conversation.",
-    image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=750&fit=crop",
-    badge: "Statement"
+    image: "https://i.pinimg.com/736x/56/d3/43/56d343b404cecbbff904105abb5b5466.jpg",
   },
   {
     id: 16,
-    name: "Maharani Kada",
+    name: "Bracelet",
     category: "party",
     type: "bangle",
     material: "18k",
     price: 20000,
     description: "Wide ceremonial kada in 18K yellow gold with intricate Meenakari enamel work. Heritage reimagined for the modern celebration.",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=750&fit=crop"
+    image: "https://i.pinimg.com/1200x/74/57/1c/74571c370bae90714b946db200cfc8c1.jpg"
   },
   {
     id: 17,
@@ -565,6 +648,15 @@ export const categories = [
     image: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=900&h=1100&fit=crop',
     count: 16,
     priceFrom: '₹6,800'
+  },
+  {
+    id: 'daily',
+    name: 'Daily Wear',
+    subtitle: 'Effortless Pieces for Every Moment',
+    description: 'Lightweight, refined essentials designed to go wherever the day takes you. Jewellery so easy, you will forget you are wearing it — until someone compliments it.',
+    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=900&h=1100&fit=crop',
+    count: 8,
+    priceFrom: '₹2,200'
   }
 ];
 

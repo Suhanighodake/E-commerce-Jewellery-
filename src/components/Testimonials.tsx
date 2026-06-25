@@ -90,10 +90,10 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <StaggerItem key={t.id}>
               <div className="group bg-white rounded-2xl p-4 sm:p-6 shadow-card hover:shadow-xl transition-shadow duration-500">
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
-                  {/* Image — 1st on mobile, 2nd on desktop */}
+                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+                  {/* Image — left side */}
                   <motion.div
-                    className="order-1 sm:order-2 w-20 h-20 sm:w-20 md:w-24 lg:w-28 rounded-xl overflow-hidden shadow-md flex-shrink-0 mx-auto sm:mx-0"
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md flex-shrink-0 mx-auto sm:mx-0"
                     whileHover={{ scale: 1.04 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
@@ -104,8 +104,8 @@ export default function Testimonials() {
                     />
                   </motion.div>
 
-                  {/* Name/role/stars — 2nd on mobile, 1st on desktop */}
-                  <div className="order-2 sm:order-1 flex flex-col items-center sm:items-start gap-2 min-w-[90px] sm:min-w-[120px]">
+                  {/* Name/role/stars + quote — right side */}
+                  <div className="flex flex-col items-center sm:items-start gap-2 flex-1">
                     <div className="text-center sm:text-left">
                       <h4 className="font-[Cormorant_Garamond] text-base sm:text-xl font-semibold text-slate-800 leading-tight">
                         {t.name}
@@ -123,12 +123,10 @@ export default function Testimonials() {
                         />
                       ))}
                     </div>
+                    <p className="text-slate-500 text-base sm:text-lg leading-[1.75] font-light text-center sm:text-left">
+                      {t.text}
+                    </p>
                   </div>
-
-                  {/* Text — 3rd on both */}
-                  <p className="order-3 text-slate-500 text-sm leading-[1.75] font-light flex-1 text-center sm:text-left">
-                    {t.text}
-                  </p>
                 </div>
               </div>
             </StaggerItem>

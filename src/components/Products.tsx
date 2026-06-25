@@ -5,7 +5,7 @@ import { products, jewelryTypes } from '../data/products';
 import ProductCard from './ProductCard';
 import { ScrollReveal } from './ScrollReveal';
 
-type CatFilter = 'all' | 'office' | 'meeting' | 'party';
+type CatFilter = 'all' | 'office' | 'meeting' | 'party' | 'daily';
 type TypeFilter = 'all' | 'ring' | 'earring' | 'bangle' | 'bracelet' | 'chain' | 'mangalsutra';
 type MatFilter = 'all' | '14k' | '18k';
 
@@ -87,12 +87,12 @@ export default function Products() {
                       <div>
                         <h4 className="text-[10px] text-brand-teal uppercase tracking-[0.25em] font-medium mb-3">Collection</h4>
                         <div className="flex flex-wrap gap-2">
-                          {['all', 'office', 'meeting', 'party'].map((c) => (
-                            <button key={c} onClick={() => setCatFilter(c as CatFilter)}
+                          {(['all', 'office', 'meeting', 'party', 'daily'] as const).map((c) => (
+                            <button key={c} onClick={() => setCatFilter(c)}
                               className={`px-3.5 py-2 text-[10px] uppercase tracking-[0.15em] transition-all rounded-sm ${
                                 catFilter === c ? 'bg-brand-teal text-white font-bold' : 'bg-white text-slate-500 border border-slate-200 hover:text-brand-teal hover:border-brand-teal'
                               }`}>
-                              {c === 'all' ? 'All' : c}
+                              {c === 'all' ? 'All' : c.charAt(0).toUpperCase() + c.slice(1)}
                             </button>
                           ))}
                         </div>

@@ -7,6 +7,7 @@ const collectionImages: Record<string, string> = {
   office: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&h=1100&fit=crop',
   meeting: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=900&h=1100&fit=crop',
   party: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=900&h=1100&fit=crop',
+  daily: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=900&h=1100&fit=crop',
 };
 
 export default function Collections() {
@@ -16,7 +17,7 @@ export default function Collections() {
         <ScrollReveal className="text-center mb-14">
           <span className="text-royal-purple text-[10px] uppercase tracking-[0.4em] font-medium">Curated For You</span>
           <h2 className="font-[Cormorant_Garamond] text-4xl md:text-5xl lg:text-[3.5rem] font-light mt-4 mb-5 text-slate-800">
-            Three Moods. <span className="text-royal-purple italic font-medium">One You.</span>
+            Four Moods. <span className="text-royal-purple italic font-medium">One You.</span>
           </h2>
           <div className="accent-line w-16 mx-auto mb-5" />
           <p className="text-slate-500 max-w-lg mx-auto text-sm leading-relaxed font-light">

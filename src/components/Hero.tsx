@@ -21,7 +21,7 @@ const banners = [
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=1600&h=700&fit=crop',
+    image: 'https://i.pinimg.com/736x/75/3e/96/753e967f5d40619063846665ef66ef72.jpg',
     title: 'New Arrivals',
     subtitle: 'Office Everyday Range',
     cta: 'View Collection',

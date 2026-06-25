@@ -2,66 +2,52 @@ import { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ScrollReveal } from './ScrollReveal';
 
-function TypewriterHeading() {
-  const fullText = 'Where Heritage\nMeets Ambition';
+const TYPEWRITER_PHRASES = ['Meets Ambition', 'Meets Confidence', 'Meets Power'];
+
+function TypewriterLine() {
   const [displayed, setDisplayed] = useState('');
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   useEffect(() => {
     if (!inView) return;
 
     let cancelled = false;
-    let display = '';
-
     const wait = (ms: number) => new Promise<void>((res) => setTimeout(res, ms));
 
     async function loop() {
+      let index = 0;
       while (!cancelled) {
-        for (let i = 0; i <= fullText.length; i++) {
+        const phrase = TYPEWRITER_PHRASES[index];
+        for (let i = 0; i <= phrase.length; i++) {
           if (cancelled) return;
-          display = fullText.slice(0, i);
-          setDisplayed(display);
-          await wait(85);
+          setDisplayed(phrase.slice(0, i));
+          await wait(90);
         }
-        await wait(1000);
-        for (let i = display.length; i >= 0; i--) {
+        await wait(1500);
+        for (let i = phrase.length; i >= 0; i--) {
           if (cancelled) return;
-          display = fullText.slice(0, i);
-          setDisplayed(display);
-          await wait(40);
+          setDisplayed(phrase.slice(0, i));
+          await wait(45);
         }
-        await wait(1000);
+        await wait(500);
+        index = (index + 1) % TYPEWRITER_PHRASES.length;
       }
     }
 
     loop();
     return () => { cancelled = true; };
-  }, [inView, fullText]);
-
-  const lines = displayed.split('\n');
+  }, [inView]);
 
   return (
-    <div ref={ref} className="mb-4 md:mb-5">
-      <h2 className="font-[Cormorant_Garamond] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-slate-900 leading-[1.05]">
-        {lines.map((line, idx) => (
-          <span key={idx} className="block min-h-[1.1em]">
-            {idx === 1 ? (
-              <span className="italic font-normal text-royal-purple">{line}</span>
-            ) : (
-              <span>{line}</span>
-            )}
-            {idx === lines.length - 1 && (
-              <motion.span
-                className="inline-block w-[2px] md:w-[3px] h-[0.6em] md:h-[0.75em] bg-royal-purple ml-1 align-middle"
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
-              />
-            )}
-          </span>
-        ))}
-      </h2>
-    </div>
+    <span ref={ref} className="block italic font-normal text-royal-purple min-h-[1.1em]">
+      {displayed}
+      <motion.span
+        className="inline-block w-[2px] md:w-[3px] h-[0.6em] md:h-[0.75em] bg-royal-purple ml-1 align-middle"
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
+      />
+    </span>
   );
 }
 
@@ -132,7 +118,12 @@ export default function About() {
                 Our Story
               </motion.span>
 
-              <TypewriterHeading />
+              <div className="mb-4 md:mb-5">
+                <h2 className="font-[Cormorant_Garamond] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-slate-900 leading-[1.05]">
+                  <span className="block">Where Heritage</span>
+                  <TypewriterLine />
+                </h2>
+              </div>
 
               <motion.div
                 initial={{ opacity: 0, scaleX: 0 }}

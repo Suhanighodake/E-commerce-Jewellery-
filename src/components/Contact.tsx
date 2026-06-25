@@ -28,7 +28,7 @@ const floatingProducts = [
   { src: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=400&h=400&fit=crop', x: '2%', y: '60%', size: 120, delay: 1.5, duration: 5.5 },
   { src: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400&h=400&fit=crop', x: '85%', y: '82%', size: 120, delay: 2, duration: 6.5 },
   { src: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop', x: '15%', y: '83%', size: 120, delay: 0.8, duration: 5 },
-  { src: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=400&h=400&fit=crop', x: '46%', y: '4%', size: 120, delay: 1.2, duration: 7 },
+  { src: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=400&h=400&fit=crop', x: '58%', y: '-1%', size: 115, delay: 0, duration: 2 },
   { src: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop', x: '40%', y: '83%', size: 120, delay: 1.8, duration: 6 },
 ];
 
