@@ -25,9 +25,9 @@ const materialsList = [
 
 export default function Materials() {
   return (
-    <section className="relative py-10 md:py-14 bg-gradient-to-b from-white via-slate-50/60 to-white overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-gradient-to-b from-white via-slate-50/60 to-white overflow-hidden">
       <div className="container-luxury relative z-10">
-        <ScrollReveal className="text-center mb-8 md:mb-10">
+        <ScrollReveal className="text-center mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-royal-purple/5 border border-royal-purple/10 rounded-full mb-8">
             <Award className="w-4 h-4 text-royal-purple" strokeWidth={1.5} />
             <span className="text-sm text-royal-purple tracking-[0.18em] uppercase font-medium">BIS Hallmarked</span>
@@ -61,28 +61,11 @@ export default function Materials() {
                     >
                       {m.purity}
                     </h3>
-                    <span className="text-sm md:text-base text-slate-400 uppercase tracking-[0.2em] mt-2 block">Gold Purity</span>
+                    {/* <span className="text-sm md:text-base text-slate-400 uppercase tracking-[0.2em] mt-2 block">Gold Purity</span> */}
                   </div>
                   <div className="text-right">
                     <p className="text-sm text-slate-400 uppercase tracking-wider mb-1">From</p>
                     <p className="text-royal-purple font-semibold text-2xl md:text-3xl">{m.priceFrom}</p>
-                  </div>
-                </div>
-
-                <div className="mb-8">
-                  <div className="h-2 rounded-full overflow-hidden flex bg-slate-100">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: m.gold }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, ease: 'easeOut' }}
-                      className="h-full rounded-full"
-                      style={{ background: `linear-gradient(90deg, ${m.accent}, ${m.accent}88)` }}
-                    />
-                  </div>
-                  <div className="flex justify-between mt-3 text-sm md:text-base uppercase tracking-[0.15em]">
-                    <span style={{ color: m.accent }}>Gold {m.gold}</span>
-                    <span className="text-slate-400">Alloy {m.alloy}</span>
                   </div>
                 </div>
 
