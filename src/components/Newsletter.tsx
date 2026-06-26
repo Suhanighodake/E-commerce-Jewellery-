@@ -74,7 +74,7 @@ export default function Newsletter() {
   const headingWords = ['Join', 'the', 'Royelle', 'Circle'];
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+    <section className="relative pt-10 pb-20 md:pt-14 md:pb-28 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
       {/* Animated background orbs */}
       <motion.div
         className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-royal-purple/[0.04] blur-[100px] pointer-events-none"

@@ -1,17 +1,20 @@
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
-import { ScrollReveal, StaggerContainer, StaggerItem } from './ScrollReveal';
+import { ScrollReveal } from './ScrollReveal';
 
-const testimonials = [
+interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  text: string;
+  image: string;
+}
+
+const actorTestimonials: Testimonial[] = [
   {
     id: 1, name: 'Aditi Rao', role: 'Bollywood Actress',
     text: 'Royelle understands the modern Indian woman. Their 18K gold pieces add just the right amount of elegance to every red carpet look.',
     image: 'https://i.pinimg.com/1200x/47/64/3a/47643ab7afda51126e3fc9876e09298e.jpg',
-  },
-  {
-    id: 2, name: 'Priya Sharma', role: 'Marketing Director',
-    text: 'The modern mangalsutra is a revelation. I wear it to client meetings and no one realizes it is a mangalsutra — yet it carries all the meaning.',
-    image: 'https://i.pinimg.com/736x/d2/fa/a3/d2faa3339b31f500a1c5655ce21579a6.jpg',
   },
   {
     id: 3, name: 'Kiara Advani', role: 'Leading Actress',
@@ -19,14 +22,22 @@ const testimonials = [
     image: 'https://i.pinimg.com/736x/a8/0f/22/a80f22e551df9d211c6437a7c185594b.jpg',
   },
   {
-    id: 4, name: 'Ananya Reddy', role: 'Investment Banker',
-    text: 'Royelle nails the balance between elegant and modern. The 14K office collection looks incredibly premium and wears comfortably all day.',
-    image: 'https://d28wu8o6itv89t.cloudfront.net/images/GhazalAlaghjpg-1709202924557.jpeg',
-  },
-  {
     id: 5, name: 'Sanya Malhotra', role: 'Film Actress',
     text: 'From morning shoots to evening premieres, Royelle transitions with me. The craftsmanship is extraordinary — every piece feels personal.',
     image: 'https://i.pinimg.com/736x/74/f4/19/74f419779c58ef9983c331baa920dc92.jpg',
+  },
+];
+
+const businessTestimonials: Testimonial[] = [
+  {
+    id: 2, name: 'Priya Sharma', role: 'Marketing Director',
+    text: 'The modern mangalsutra is a revelation. I wear it to client meetings and no one realizes it is a mangalsutra — yet it carries all the meaning.',
+    image: 'https://i.pinimg.com/736x/d2/fa/a3/d2faa3339b31f500a1c5655ce21579a6.jpg',
+  },
+  {
+    id: 4, name: 'Ananya Reddy', role: 'Investment Banker',
+    text: 'Royelle nails the balance between elegant and modern. The 14K office collection looks incredibly premium and wears comfortably all day.',
+    image: 'https://d28wu8o6itv89t.cloudfront.net/images/GhazalAlaghjpg-1709202924557.jpeg',
   },
   {
     id: 6, name: 'Kavita Menon', role: 'Startup Founder',
@@ -46,9 +57,82 @@ const trustAvatars = [
   'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face&q=80',
 ];
 
+const verticalMask = {
+  maskImage: 'linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%)',
+  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%)',
+};
+
+function TestimonialCard({ t }: { t: Testimonial }) {
+  return (
+    <div className="group bg-white rounded-2xl p-4 sm:p-6 shadow-card hover:shadow-xl transition-shadow duration-500 w-full flex-shrink-0">
+      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+        {/* Image — left side */}
+        <motion.div
+          className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md flex-shrink-0 mx-auto sm:mx-0"
+          whileHover={{ scale: 1.04 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          <img
+            src={t.image}
+            alt={t.name}
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+
+        {/* Name/role/stars + quote — right side */}
+        <div className="flex flex-col items-center sm:items-start gap-2 flex-1 w-full">
+          <div className="flex items-start justify-between w-full gap-3">
+            <div className="text-center sm:text-left">
+              <h4 className="font-[Cormorant_Garamond] text-base sm:text-xl font-semibold text-slate-800 leading-tight">
+                {t.name}
+              </h4>
+              <p className="text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-[0.12em] font-medium mt-0.5">
+                {t.role}
+              </p>
+            </div>
+            <div className="flex items-center gap-[2px] sm:gap-0.5 flex-shrink-0">
+              {[...Array(5)].map((_, j) => (
+                <Star
+                  key={j}
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-royal-purple fill-royal-purple"
+                  strokeWidth={0}
+                />
+              ))}
+            </div>
+          </div>
+          <p className="text-slate-500 text-base sm:text-lg leading-[1.75] font-light text-center sm:text-left">
+            {t.text}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MarqueeColumn({ items, direction }: { items: Testimonial[]; direction: 'up' | 'down' }) {
+  const duplicated = [...items, ...items];
+
+  return (
+    <div
+      className="relative h-[420px] sm:h-[520px] w-full overflow-hidden"
+      style={verticalMask}
+    >
+      <motion.div
+        className="flex flex-col gap-5 sm:gap-6 w-full"
+        animate={{ y: direction === 'down' ? ['-50%', '0%'] : ['0%', '-50%'] }}
+        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+      >
+        {duplicated.map((t, i) => (
+          <TestimonialCard key={`${t.id}-${i}`} t={t} />
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
 export default function Testimonials() {
   return (
-    <section className="relative py-16 md:py-20 overflow-hidden bg-slate-50">
+    <section className="relative pt-8 md:pt-10 pb-16 md:pb-20 overflow-hidden bg-slate-50">
       <div className="container-luxury">
         {/* Header */}
         <ScrollReveal className="text-center mb-10 md:mb-12">
@@ -85,53 +169,11 @@ export default function Testimonials() {
           <span className="text-slate-500 text-xs sm:text-sm uppercase tracking-[0.2em]">Trusted by 10,000+ Women</span>
         </div>
 
-        {/* Cards grid */}
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6" staggerDelay={0.12}>
-          {testimonials.map((t) => (
-            <StaggerItem key={t.id}>
-              <div className="group bg-white rounded-2xl p-4 sm:p-6 shadow-card hover:shadow-xl transition-shadow duration-500">
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
-                  {/* Image — left side */}
-                  <motion.div
-                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md flex-shrink-0 mx-auto sm:mx-0"
-                    whileHover={{ scale: 1.04 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  >
-                    <img
-                      src={t.image}
-                      alt={t.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-
-                  {/* Name/role/stars + quote — right side */}
-                  <div className="flex flex-col items-center sm:items-start gap-2 flex-1">
-                    <div className="text-center sm:text-left">
-                      <h4 className="font-[Cormorant_Garamond] text-base sm:text-xl font-semibold text-slate-800 leading-tight">
-                        {t.name}
-                      </h4>
-                      <p className="text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-[0.12em] font-medium mt-0.5">
-                        {t.role}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-[2px] sm:gap-0.5">
-                      {[...Array(5)].map((_, j) => (
-                        <Star
-                          key={j}
-                          className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-royal-purple fill-royal-purple"
-                          strokeWidth={0}
-                        />
-                      ))}
-                    </div>
-                    <p className="text-slate-500 text-base sm:text-lg leading-[1.75] font-light text-center sm:text-left">
-                      {t.text}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        {/* Two vertical testimonial marquees with top/bottom blur masks */}
+        <div className="flex flex-col md:flex-row gap-5 sm:gap-6 justify-center items-start">
+          <MarqueeColumn items={actorTestimonials} direction="down" />
+          <MarqueeColumn items={businessTestimonials} direction="up" />
+        </div>
       </div>
     </section>
   );

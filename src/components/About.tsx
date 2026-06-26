@@ -53,7 +53,7 @@ function TypewriterLine() {
 
 export default function About() {
   return (
-    <section id="about" className="relative py-14 md:py-20 bg-slate-50 overflow-hidden">
+    <section id="about" className="relative pt-14 md:pt-20 pb-6 md:pb-8 bg-slate-50 overflow-hidden">
       <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(139,92,246,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(168,85,247,0.06) 0%, transparent 50%)' }} />
 
       <div className="container-luxury relative z-10">
