@@ -169,8 +169,15 @@ export default function Testimonials() {
           <span className="text-slate-500 text-xs sm:text-sm uppercase tracking-[0.2em]">Trusted by 10,000+ Women</span>
         </div>
 
-        {/* Two vertical testimonial marquees with top/bottom blur masks */}
-        <div className="flex flex-col md:flex-row gap-5 sm:gap-6 justify-center items-start">
+        {/* Mobile: simple stacked cards */}
+        <div className="md:hidden flex flex-col gap-4">
+          {[...actorTestimonials, ...businessTestimonials].map((t) => (
+            <TestimonialCard key={t.id} t={t} />
+          ))}
+        </div>
+
+        {/* Desktop: two vertical testimonial marquees with top/bottom blur masks */}
+        <div className="hidden md:flex gap-5 sm:gap-6 justify-center items-start">
           <MarqueeColumn items={actorTestimonials} direction="down" />
           <MarqueeColumn items={businessTestimonials} direction="up" />
         </div>
