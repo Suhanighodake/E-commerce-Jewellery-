@@ -12,20 +12,20 @@ export default function TrustStrip() {
   return (
     <section className="bg-purple-50">
       <div className="container-luxury">
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 py-4 md:py-5">
+        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-8 py-3 md:py-5">
           {trustItems.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.label}
-                className="flex items-center gap-3 py-2 px-2"
+                className="flex items-center gap-2 md:gap-3 py-2 px-1 md:px-2"
               >
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <Icon className="w-5 h-5 text-royal-purple" strokeWidth={1.5} />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Icon className="w-4 h-4 md:w-5 md:h-5 text-royal-purple" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <p className="text-base font-bold text-royal-purple">{item.label}</p>
-                  <p className="text-sm text-purple-900/60">{item.sub}</p>
+                  <p className="text-sm md:text-base font-bold text-royal-purple">{item.label}</p>
+                  <p className="text-xs md:text-sm text-purple-900/60">{item.sub}</p>
                 </div>
               </div>
             );

@@ -74,23 +74,28 @@ export default function Newsletter() {
   const headingWords = ['Join', 'the', 'Royelle', 'Circle'];
 
   return (
-    <section className="relative pt-10 pb-20 md:pt-14 md:pb-28 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
-      {/* Animated background orbs */}
+    <section className="relative pt-10 pb-20 md:pt-14 md:pb-28 overflow-hidden bg-gradient-to-br from-white via-slate-50 to-white">
+      {/* Ambient gradient orbs like Materials section */}
       <motion.div
-        className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-royal-purple/[0.04] blur-[100px] pointer-events-none"
+        className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-[#D4AF37]/[0.08] blur-[100px] pointer-events-none"
         animate={{ x: [0, 40, 0], y: [0, 30, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-royal-gold/[0.06] blur-[100px] pointer-events-none"
+        className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[#B76E79]/[0.08] blur-[100px] pointer-events-none"
         animate={{ x: [0, -30, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-[#4B0082]/[0.06] blur-[100px] pointer-events-none"
+        animate={{ x: [0, 30, 0], y: [0, -30, 0], scale: [1, 1.08, 1] }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
       />
 
       <div className="container-luxury relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-5xl mx-auto">
           {/* Left: Content */}
-          <div>
+          <div className="text-center lg:text-left">
             <ScrollReveal>
               {/* Badge */}
               <motion.div
@@ -119,7 +124,7 @@ export default function Newsletter() {
               </h2>
 
               <motion.p
-                className="text-slate-500 text-lg md:text-xl leading-[1.8] mb-10 font-light max-w-md"
+                className="text-slate-500 text-lg md:text-xl leading-[1.8] mb-10 font-light max-w-md mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

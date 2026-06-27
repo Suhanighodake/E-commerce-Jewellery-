@@ -57,7 +57,7 @@ export default function About() {
       <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(139,92,246,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(168,85,247,0.06) 0%, transparent 50%)' }} />
 
       <div className="container-luxury relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-8">
           {/* Left: Images */}
           <ScrollReveal direction="left" className="lg:w-[48%]">
             <motion.div
